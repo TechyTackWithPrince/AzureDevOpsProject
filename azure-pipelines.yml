@@ -13,7 +13,7 @@ stages:
 - stage: Build
   displayName: Build Stage
   jobs:
-  - job: BuildJob
+  - job: InstallDependencies
     steps:
     # - task: UsePythonVersion@0
     #   inputs:
@@ -23,18 +23,14 @@ stages:
     #   displayName: 'Use Python $(pythonVersion)'
     - script: |
         cd application
+        pip install -r requirements.txt
       displayName: 'Install requirements'
 
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.BinariesDirectory)'
-        includeRootFolder: true
-        archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        replaceExistingArchive: true
-    
-    # - task: PublishPipelineArtifact@1
-    # inputs:
-    #   targetPath: '$(Pipeline.Workspace)'
-    #   artifact: 'python_zip'
-    #   publishLocation: 'pipeline'
+- stage: Deploy
+  displayName: Deploy Stage
+  jobs:
+  - job: DeploymentonUAT
+    steps:
+    - script: |
+        python3 main.py
+      displayName: 'Deployment UAT'
