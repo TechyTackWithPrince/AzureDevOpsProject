@@ -23,11 +23,6 @@ stages:
     #   displayName: 'Use Python $(pythonVersion)'
     - script: |
         cd application
-        python -m venv antenv
-        source antenv/b
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-      # workingDirectory: $(projectRoot)
       displayName: 'Install requirements'
 
     - task: ArchiveFiles@2
@@ -38,6 +33,8 @@ stages:
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         replaceExistingArchive: true
     
-    - upload: $(Build.ArtifactStaginDirectory)/$(Build.BuildId).zip
-      displayName: 'Upload Package'
-      artifact: drop
+    # - task: PublishPipelineArtifact@1
+    # inputs:
+    #   targetPath: '$(Pipeline.Workspace)'
+    #   artifact: 'python_zip'
+    #   publishLocation: 'pipeline'
