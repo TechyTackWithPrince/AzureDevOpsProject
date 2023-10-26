@@ -32,5 +32,6 @@ stages:
   - job: DeploymentonUAT
     steps:
     - script: |
+        cd application
         python3 main.py
       displayName: 'Deployment UAT'
