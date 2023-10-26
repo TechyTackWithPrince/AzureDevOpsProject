@@ -15,12 +15,12 @@ stages:
   jobs:
   - job: BuildJob
     steps:
-    - task: UsePythonVersion@0
-      inputs:
-        versionSpec: '3.11'
-        addToPath: true
-        architecture: 'x64'
-      displayName: 'Use Python $(pythonVersion)'
+    # - task: UsePythonVersion@0
+    #   inputs:
+    #     versionSpec: '3.11'
+    #     addToPath: true
+    #     architecture: 'x64'
+    #   displayName: 'Use Python $(pythonVersion)'
     - script: |
         cd application
         python -m venv antenv
