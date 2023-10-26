@@ -27,7 +27,7 @@ stages:
         source antenv/b
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-      workingDirectory: $(projectRoot)
+      # workingDirectory: $(projectRoot)
       displayName: 'Install requirements'
 
     - task: ArchiveFiles@2
