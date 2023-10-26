@@ -1,0 +1,43 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- main
+
+pool:
+  name: "my agent pool"
+
+stages:
+- stage: Build
+  displayName: Build Stage
+  jobs:
+  - job: BuildJob
+    steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '3.11'
+        addToPath: true
+        architecture: 'x64'
+      displayName: 'Use Python $(pythonVersion)'
+    - script: |
+        cd application
+        python -m venv antenv
+        source antenv/b
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+      workingDirectory: $(projectRoot)
+      displayName: 'Install requirements'
+
+    - task: ArchiveFiles@2
+      inputs:
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
+    
+    - upload: $(Build.ArtifactStaginDirectory)/$(Build.BuildId).zip
+      displayName: 'Upload Package'
+      artifact: drop
