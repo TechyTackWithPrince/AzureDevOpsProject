@@ -76,6 +76,8 @@ resource "azurerm_linux_virtual_machine" "uatvm" {
 #!/bin/bash
 apt-get update
 apt-get -y install python
+apt-get -y install python3-pip
+pip install flask
 EOF
   )
 }
@@ -108,8 +110,10 @@ resource "azurerm_linux_virtual_machine" "preprodvm" {
   }
   custom_data = base64encode(<<EOF
 #!/bin/bash
-apt-get update
-apt-get -y install python
+sudo apt-get update
+sudo apt-get -y install python
+sudo apt-get -y install python3-pip
+sudo pip install flask
 EOF
   )
 }
