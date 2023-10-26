@@ -11,10 +11,9 @@ pool:
 
 steps:
 - script: |
-  ls
-  cd application
-  ls
-
+    ls
+    cd application
+    ls
   displayName: 'Run a one-line script'
 
 - script: |
