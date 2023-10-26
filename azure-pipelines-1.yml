@@ -10,7 +10,11 @@ pool:
   name: "my agent pool"
 
 steps:
-- script: echo Hello, world!
+- script: |
+  ls
+  cd application
+  ls
+
   displayName: 'Run a one-line script'
 
 - script: |
