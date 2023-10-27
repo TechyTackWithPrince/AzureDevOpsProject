@@ -20,6 +20,6 @@ stages:
       inputs:
         rootFolderOrFile: '$(Build.BinariesDirectory)'
         includeRootFolder: true
-        archiveType: 'zip'
+        archiveType: 'tar'
         archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
         replaceExistingArchive: true
