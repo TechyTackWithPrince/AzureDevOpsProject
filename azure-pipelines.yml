@@ -11,6 +11,10 @@ pool:
   name: "my agent pool"
 
 steps:
+- script: |
+    echo $(Build.ArtifactStagingDirectory)
+  displayName: 'Echoers'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
