@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title>Celsius to Fahrenheit Converter</title>
+            <title>Celsius to Fahrenheit Converter - Python</title>
         </head>
         <body>
             <h1>Celsius to Fahrenheit Converter</h1>
