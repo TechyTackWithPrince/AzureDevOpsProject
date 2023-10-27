@@ -35,7 +35,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: './build'  # Path to your build artifacts
+    pathtoPublish: './'  # Path to your build artifacts
     artifactName: 'drop'
   displayName: 'Publish Build Artifacts'
     
