@@ -15,19 +15,11 @@ stages:
   jobs:
   - job: InstallDependencies
     steps:
-    # - task: UsePythonVersion@0
-    #   inputs:
-    #     versionSpec: '3.11'
-    #     addToPath: true
-    #     architecture: 'x64'
-    #   displayName: 'Use Python $(pythonVersion)'
-    # - script: |
-    #     cd application
-    #     pip install -r requirements.txt
-    #   displayName: 'Install requirements'
-    - task: PublishBuildArtifacts@1
+    
+    - task: ArchiveFiles@2
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
-        StoreAsTar: true
+        rootFolderOrFile: '$(Build.BinariesDirectory)'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
