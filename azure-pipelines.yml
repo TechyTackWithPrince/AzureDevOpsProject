@@ -25,13 +25,8 @@ stages:
         cd application
         pip install -r requirements.txt
       displayName: 'Install requirements'
-
-- stage: Deploy
-  displayName: Deploy Stage
-  jobs:
-  - job: DeploymentonUAT
-    steps:
-    - script: |
-        cd application
-        python3 main.py
-      displayName: 'Deployment UAT'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
