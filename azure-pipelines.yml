@@ -21,10 +21,10 @@ stages:
     #     addToPath: true
     #     architecture: 'x64'
     #   displayName: 'Use Python $(pythonVersion)'
-    - script: |
-        cd application
-        pip install -r requirements.txt
-      displayName: 'Install requirements'
+    # - script: |
+    #     cd application
+    #     pip install -r requirements.txt
+    #   displayName: 'Install requirements'
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
