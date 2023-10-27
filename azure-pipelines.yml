@@ -25,9 +25,13 @@ steps:
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
-    archiveType: 'zip'
+    archiveType: 'tar'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- script: |
+    ls -lrth
+  displayName: 'List all'
 
 - task: PublishBuildArtifacts@1
   inputs:
