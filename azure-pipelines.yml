@@ -33,11 +33,11 @@ steps:
 #     ls -lrth
 #   displayName: 'List all'
 
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathtoPublish: 'nodejs_application'  # Path to your build artifacts
-    artifactName: 'node'
-  displayName: 'Publish Build Artifacts'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     pathtoPublish: 'nodejs_application'  # Path to your build artifacts
+#     artifactName: 'node'
+#   displayName: 'Publish Build Artifacts'
     
 - task: PublishBuildArtifacts@1
   inputs:
