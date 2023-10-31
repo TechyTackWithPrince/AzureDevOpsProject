@@ -2,7 +2,7 @@ resource "azurerm_public_ip" "ip1" {
   name                = "publicip1"
   location            = azurerm_resource_group.res_group.location
   resource_group_name = azurerm_resource_group.res_group.name
-  allocation_method   = "Dynamic" # You can also use "Static" for a static IP
+  allocation_method   = "Dynamic"
 
   tags = {
     creator = "prince"
@@ -13,7 +13,7 @@ resource "azurerm_public_ip" "ip2" {
   name                = "publicip2"
   location            = azurerm_resource_group.res_group.location
   resource_group_name = azurerm_resource_group.res_group.name
-  allocation_method   = "Dynamic" # You can also use "Static" for a static IP
+  allocation_method   = "Dynamic"
 
   tags = {
     creator = "prince"
